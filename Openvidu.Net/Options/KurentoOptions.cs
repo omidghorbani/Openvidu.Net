@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Openvidu.Net.DTOs;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Openvidu.Net.Options

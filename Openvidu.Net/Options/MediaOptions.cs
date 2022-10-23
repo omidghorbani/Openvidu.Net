@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Openvidu.Net.DTOs;
+using System.Text.Json.Serialization;
 
 namespace Openvidu.Net.Options
 {
