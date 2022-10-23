@@ -11,13 +11,15 @@ namespace Openvidu.Net.Aspnet.Core
     {
         public static IServiceCollection ConfigureOpenVidu(this IServiceCollection services)
         {
-            services.AddSingleton<OpenViduService>();
+            services.AddHostedService<OpenViduService>();
+
             return services;
         }
 
         public static IApplicationBuilder UseOpenVidu(this IApplicationBuilder app)
         {
             app.UseMiddleware<OpenViduMiddleware>();
+
             return app;
         }
     }
