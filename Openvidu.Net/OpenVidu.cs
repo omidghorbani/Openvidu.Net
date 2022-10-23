@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
+using Openvidu.Net.DTOs;
 using Openvidu.Net.Exceptions;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -16,10 +17,11 @@ namespace Openvidu.Net
     public class OpenVidu
     {
 
-        private String secret;
-        protected String hostname;
+        private string secret;
+        protected string hostname;
         protected RestClient httpClient;
-        protected Dictionary<String, Session> activeSessions = new Dictionary<string, Session>();
+        protected Dictionary<string, Session> activeSessions = new Dictionary<string, Session>();
+        protected Dictionary<string, Recording> activeRecordings = new Dictionary<string, Recording>();
 
         protected const string API_PATH = "openvidu/api";
         protected const string API_SESSIONS = API_PATH + "/sessions";
@@ -29,7 +31,7 @@ namespace Openvidu.Net
         protected const string API_RECORDINGS_STOP = API_RECORDINGS + "/stop";
 
 
-        public OpenVidu(String hostname, String secret)
+        public OpenVidu(string hostname, string secret)
         {
             this.hostname = hostname;
             this.secret = secret;
@@ -47,15 +49,19 @@ namespace Openvidu.Net
 
         public Session CreateSession()
         {
+
             return CreateSession(new Session());
 
         }
+
         public Session CreateSession(Session session)
         {
             var request = new RestRequest(API_SESSIONS, Method.Post);
-            request.AddHeader("Content-Type", "application/json");
             var body = JsonSerializer.Serialize(session);
+
+            request.AddHeader("Content-Type", "application/json");
             request.AddParameter("application/json", body, ParameterType.RequestBody);
+
             RestResponse response = httpClient.Execute(request);
 
             if (response.StatusCode != HttpStatusCode.OK)
@@ -64,10 +70,14 @@ namespace Openvidu.Net
             if (response.Content != null)
                 session = JsonSerializer.Deserialize<Session>(response.Content);
 
+            Fetch();
+
             return session;
         }
-        public Recording StartRecording(String sessionId, RecordingProperties properties)
+
+        public void StartRecording(string sessionId, RecordingProperties properties)
         {
+
             var request = new RestRequest(API_RECORDINGS_START, Method.Post);
 
             request.AddHeader("Content-Type", "application/json");
@@ -75,51 +85,98 @@ namespace Openvidu.Net
             var body = JsonNode.Parse(properties.ToJson())?.AsObject();
 
             body.Add("session", sessionId);
-            request.AddParameter("application/json", body.ToJsonString(), ParameterType.RequestBody);
 
+            request.AddParameter("application/json", body.ToJsonString(), ParameterType.RequestBody);
 
             RestResponse response = httpClient.Execute(request);
 
-
-            return null;
+            if (response.StatusCode == HttpStatusCode.OK)
+                FetchRecordings();
+            else
+                throw new OpenViduHttpException(response.StatusCode.ToString());
 
 
         }
-        public Recording StartRecording(String sessionId, String name)
+
+        public void StartRecording(string sessionId, string name = "")
         {
-            return StartRecording(sessionId, new RecordingProperties()
+            StartRecording(sessionId, new RecordingProperties()
             {
                 Name = name
             });
         }
 
-        //public Recording StartRecording(String sessionId)
-        //{
-        //}
-        //public Recording StopRecording(String recordingId)
-        //{
-        //}
-        //public Recording GetRecording(String recordingId)
-        //{
-        //}
+        public void StopRecording(string recordingId)
+        {
+            var recording = GetRecording(recordingId);
 
-        //public List<Recording> ListRecordings()
-        //{
+            var request = new RestRequest($"{API_RECORDINGS_STOP}/{recordingId}" , Method.Post);
 
-        //}
+            request.AddHeader("Content-Type", "application/json");
+    
+            RestResponse response = httpClient.Execute(request);
 
+            if (response.StatusCode == HttpStatusCode.OK)
+                FetchRecordings();
+            else
+                throw new OpenViduHttpException(response.StatusCode.ToString());
 
-        //public void DeleteRecording(String recordingId)
-        //{
+        }
 
-        //}
+        public Recording GetRecording(string recordingId)
+        {
+            foreach (var recording in activeRecordings)
+                if (recording.Value.Id == recordingId)
+                    return recording.Value;
+
+            throw new OpenViduException($"No recording exists for the passed {recordingId}.");
+        }
+
+        public List<Recording> ListRecordings()
+        {
+            return activeRecordings.Values.ToList();
+        }
+
+        public void FetchRecordings()
+        {
+            var request = new RestRequest(API_RECORDINGS, Method.Get);
+            request.AddHeader("Content-Type", "application/json");
+
+            RestResponse response = httpClient.Execute(request);
+
+            if (response.StatusCode != HttpStatusCode.OK)
+                throw new OpenViduHttpException(response.StatusCode.ToString());
+
+            var json = JsonNode.Parse(response.Content ?? string.Empty);
+            var data = json?["items"]?.ToString();
+            var list = JsonSerializer.Deserialize<Recording[]>(data).ToList();
+
+            if (activeRecordings.Any())
+                activeRecordings.Clear();
+
+            foreach (var recording in list)
+                activeRecordings.Add(recording.SessionId, recording);
+
+        }
+        
+        public void DeleteRecording(string recordingId)
+        {
+            var request = new RestRequest($"{API_RECORDINGS}/{recordingId}", Method.Delete);
+            request.AddHeader("Content-Type", "application/json");
+
+            RestResponse response = httpClient.Execute(request);
+
+            if (response.StatusCode != HttpStatusCode.NoContent)
+                throw new OpenViduHttpException(response.StatusCode.ToString());
+
+        }
 
         public List<Session> GetActiveSessions()
         {
             return activeSessions.Values.ToList();
         }
 
-        public Session GetActiveSession(String sessionId)
+        public Session GetActiveSession(string sessionId)
         {
             if (activeSessions.ContainsKey(sessionId))
                 return activeSessions[sessionId];
@@ -128,24 +185,35 @@ namespace Openvidu.Net
 
         public bool Fetch()
         {
-            var request = new RestRequest(API_SESSIONS, Method.Get);
-            request.AddHeader("Content-Type", "application/json");
-
-
-            RestResponse response = httpClient.Execute(request);
-
-            if (response.StatusCode != HttpStatusCode.OK)
-                throw new OpenViduHttpException(response.StatusCode.ToString());
-
-            var json = JsonNode.Parse(response.Content ?? string.Empty);
-            var data = json["content"].ToString();
-            var list = JsonSerializer.Deserialize<Session[]>(data);
-
-            foreach (var session in list)
+            try
             {
-                activeSessions.Add(session.Id, session);
+                var request = new RestRequest(API_SESSIONS, Method.Get);
+
+                request.AddHeader("Content-Type", "application/json");
+
+                RestResponse response = httpClient.Execute(request);
+
+                if (response.StatusCode != HttpStatusCode.OK)
+                    throw new OpenViduHttpException(response.StatusCode.ToString());
+
+                var json = JsonNode.Parse(response.Content ?? string.Empty);
+                var data = json["content"].ToString();
+                var list = JsonSerializer.Deserialize<Session[]>(data);
+
+                if (activeSessions.Any())
+                    activeSessions.Clear();
+
+                foreach (var session in list)
+                {
+                    activeSessions.Add(session.Id, session);
+                }
+                return true;
             }
-            return false;
+            catch (Exception ex)
+            {
+
+                return false;
+            }
         }
     }
 }

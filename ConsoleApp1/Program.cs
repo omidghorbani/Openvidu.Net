@@ -7,7 +7,8 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
 
-            var ov = new OpenVidu("https://medias.shooka.com:443", "MY_SECRET");
+            var ov = new OpenVidu("https://medias.shooka.com:443", 
+                "grkWXM6aYwQsPrikkW2EPl6pBgx3yszHWz0W842JTYvT38LNJbBYOwUH5McH6xhF");
             var session = ov.CreateSession();
 
             ov.Fetch();
