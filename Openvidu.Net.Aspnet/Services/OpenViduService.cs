@@ -12,7 +12,7 @@ public class OpenViduService : IOpenViduService, IHostedService
     private readonly ILogger<OpenViduService> _logger;
 
     private Func<OpenViduEvent, Task>? _func;
-    
+
     public OpenViduService(IHostApplicationLifetime applicationLifetime, ILogger<OpenViduService> logger)
     {
         _logger = logger;
@@ -47,15 +47,9 @@ public class OpenViduService : IOpenViduService, IHostedService
                 if (_func == null)
                     break;
 
-                OpenViduEvent? item;
-                while (_jobs.Reader.TryRead(out item))
-                {
+                while (_jobs.Reader.TryRead(out var item))
                     if (_func != null)
-                    {
                         await _func(item);
-
-                    }
-                }
 
             }
             catch (ChannelClosedException)
@@ -65,14 +59,13 @@ public class OpenViduService : IOpenViduService, IHostedService
             catch (Exception ex)
             {
                 break;
-
             }
         }
     }
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        
+
         _logger.LogInformation($"The {nameof(OpenViduService)} started.");
 
         return Task.CompletedTask;
@@ -80,7 +73,7 @@ public class OpenViduService : IOpenViduService, IHostedService
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
-        
+
         _logger.LogInformation($"The {nameof(OpenViduService)} stopping.");
 
         _jobs.Writer.TryComplete();
