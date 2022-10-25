@@ -1,0 +1,12 @@
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\bin\Release\net6.0\Openvidu.Net.Aspnet.deps.json
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\bin\Release\net6.0\Openvidu.Net.Aspnet.dll
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\bin\Release\net6.0\Openvidu.Net.Aspnet.pdb
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\obj\Release\net6.0\Openvidu.Net.Aspnet.csproj.AssemblyReference.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\obj\Release\net6.0\Openvidu.Net.Aspnet.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\obj\Release\net6.0\Openvidu.Net.Aspnet.AssemblyInfoInputs.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\obj\Release\net6.0\Openvidu.Net.Aspnet.AssemblyInfo.cs
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\obj\Release\net6.0\Openvidu.Net.Aspnet.csproj.CoreCompileInputs.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\obj\Release\net6.0\Openvidu.Net.Aspnet.dll
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\obj\Release\net6.0\refint\Openvidu.Net.Aspnet.dll
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\obj\Release\net6.0\Openvidu.Net.Aspnet.pdb
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net.Aspnet\obj\Release\net6.0\ref\Openvidu.Net.Aspnet.dll

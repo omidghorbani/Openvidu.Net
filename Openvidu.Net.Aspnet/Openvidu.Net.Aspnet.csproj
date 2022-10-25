@@ -1,16 +1,32 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageIcon>logo.png</PackageIcon>
+    <AssemblyVersion>1.0.3</AssemblyVersion>
+    <FileVersion>1.0.3</FileVersion>
+    <Version>1.0.3</Version>
+    <RepositoryUrl>https://gitlab.com/atreya-co/vendor/openvidu/openvidu.net</RepositoryUrl>
+    <PackageProjectUrl>https://gitlab.com/atreya-co/vendor/openvidu/openvidu.net</PackageProjectUrl>
+    <LangVersion>latest</LangVersion>
+    <Description>this package generally can help to make webhook endpoint to receive OpenVidu WebHook events quickly and simple, this package can be scaled up to handle many webhook events and manage requests very fast because we use an event bus on memory. this package support after 2.23.0 version of OpenVidu.</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Users\Omid\Pictures\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.2.2" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Openvidu.Net" Version="1.0.2" />
   </ItemGroup>
 
 </Project>

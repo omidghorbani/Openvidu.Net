@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rFZ7X+mPYAO0HIGkNDyEhvy6mbzJd5LP9Hre2HvvUmX3IwjRthHfmn1DpTuRkxlXqeTYA6kwzDF8M3G0A4Ib6g==",
+  "dgSpecHash": "xpy/P/C9c+3yQls7RmGsd25WEE4h16yTeUPkXl1atRwei3653w0KjwlyKCqJxGyoK+BWFE+VYfpNIR0ScNgJZA==",
   "success": true,
   "projectFilePath": "C:\\Projects\\open-source\\Openvidu\\Openvidu.Net\\Openvidu.Net\\Openvidu.Net.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Omid\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
+    "C:\\Users\\Omid\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Omid\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\Omid\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Omid\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\Omid\\.nuget\\packages\\restsharp\\108.0.1\\restsharp.108.0.1.nupkg.sha512",

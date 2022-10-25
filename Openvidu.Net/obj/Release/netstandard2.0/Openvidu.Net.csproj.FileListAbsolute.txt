@@ -1,0 +1,10 @@
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net\bin\Release\netstandard2.0\Openvidu.Net.deps.json
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net\bin\Release\netstandard2.0\Openvidu.Net.dll
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net\bin\Release\netstandard2.0\Openvidu.Net.pdb
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net\obj\Release\netstandard2.0\Openvidu.Net.csproj.AssemblyReference.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net\obj\Release\netstandard2.0\Openvidu.Net.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net\obj\Release\netstandard2.0\Openvidu.Net.AssemblyInfoInputs.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net\obj\Release\netstandard2.0\Openvidu.Net.AssemblyInfo.cs
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net\obj\Release\netstandard2.0\Openvidu.Net.csproj.CoreCompileInputs.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net\obj\Release\netstandard2.0\Openvidu.Net.dll
+C:\Projects\open-source\Openvidu\Openvidu.Net\Openvidu.Net\obj\Release\netstandard2.0\Openvidu.Net.pdb

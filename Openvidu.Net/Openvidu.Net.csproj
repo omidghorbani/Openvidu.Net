@@ -2,9 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageIcon>logo.png</PackageIcon>
+    <Description>this package makes easy access to OpenVidu Api in the Dotnet application platform, in this project you can use all API on OpenVidu by REST API. Finally this package work on OpenVidu 2.23.0 version.</Description>
+    <AssemblyVersion>1.0.2</AssemblyVersion>
+    <FileVersion>1.0.2</FileVersion>
+    <Version>1.0.2</Version>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://gitlab.com/atreya-co/vendor/openvidu/openvidu.net</RepositoryUrl>
+    <PackageProjectUrl>https://gitlab.com/atreya-co/vendor/openvidu/openvidu.net</PackageProjectUrl>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\..\..\..\Users\Omid\Pictures\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="RestSharp" Version="108.0.1" />
     <PackageReference Include="System.Text.Json" Version="6.0.5" />
   </ItemGroup>

@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Projects\\open-source\\Openvidu\\Openvidu.Net\\Openvidu.Net\\Openvidu.Net.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.2",
       "restore": {
         "projectUniqueName": "C:\\Projects\\open-source\\Openvidu\\Openvidu.Net\\Openvidu.Net\\Openvidu.Net.csproj",
         "projectName": "Openvidu.Net",
@@ -40,6 +40,10 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
