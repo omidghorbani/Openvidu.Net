@@ -9,6 +9,7 @@ using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.Configuration;
 using Openvidu.Net.DTOs;
+using Openvidu.Net.Enums;
 using Openvidu.Net.Exceptions;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -19,7 +20,7 @@ namespace Openvidu.Net
     {
 
         private string secret;
-        private string username= "OPENVIDUAPP";
+        private string username = "OPENVIDUAPP";
         private string hostname;
         protected RestClient httpClient;
         protected Dictionary<string, Session> activeSessions = new Dictionary<string, Session>();
@@ -32,13 +33,16 @@ namespace Openvidu.Net
         protected const string API_RECORDINGS_START = API_RECORDINGS + "/start";
         protected const string API_RECORDINGS_STOP = API_RECORDINGS + "/stop";
         protected const string API_CONNECTION = "connection";
+        protected const string API_MEDIANODE = API_PATH + "/media-nodes";
+
+
         private readonly IConfigurationRoot _appSetting;
 
-        public OpenViduManager( IConfigurationRoot appSetting)
+        public OpenViduManager(IConfigurationRoot appSetting)
         {
             hostname = appSetting.GetSection("Router:Hostname").Value;
-            username = appSetting.GetSection("Router:Username").Value; 
-            secret = appSetting.GetSection("Router:Secret").Value; 
+            username = appSetting.GetSection("Router:Username").Value;
+            secret = appSetting.GetSection("Router:Secret").Value;
             _appSetting = appSetting;
 
             if (!hostname.EndsWith("/"))
@@ -97,7 +101,7 @@ namespace Openvidu.Net
 
         public List<Session> RetrieveAllSessions()
         {
-            var request = new RestRequest(API_SESSIONS, Method.Get);
+            var request = new RestRequest(API_SESSIONS);
 
             request.AddHeader("Content-Type", "application/json");
 
@@ -115,7 +119,7 @@ namespace Openvidu.Net
 
             foreach (var session in list)
                 activeSessions.Add(session.Id, session);
-            
+
             return list.ToList();
 
         }
@@ -186,7 +190,7 @@ namespace Openvidu.Net
         public List<Connection> RetrieveAllConnections(string sessionId)
         {
             //openvidu/api/sessions/SESSION_ID/connection 
-            var request = new RestRequest($"{API_SESSIONS}/{sessionId}/{API_CONNECTION}", Method.Get);
+            var request = new RestRequest($"{API_SESSIONS}/{sessionId}/{API_CONNECTION}");
 
             request.AddHeader("Content-Type", "application/json");
 
@@ -321,7 +325,7 @@ namespace Openvidu.Net
 
         public List<Recording> RetrieveAllRecording()
         {
-            var request = new RestRequest(API_RECORDINGS, Method.Get);
+            var request = new RestRequest(API_RECORDINGS);
             request.AddHeader("Content-Type", "application/json");
 
             RestResponse response = httpClient.Execute(request);
@@ -358,12 +362,168 @@ namespace Openvidu.Net
 
         #region [ MediaNode ]
 
-        public void RetrieveMediaNode() { throw new NotImplementedException(); }
-        public void RetrieveAllMediaNodes() { throw new NotImplementedException(); }
-        public void AddMediaNode() { throw new NotImplementedException(); }
-        public void RemoveMediaNode() { throw new NotImplementedException(); }
-        public void ModifyMediaNode() { throw new NotImplementedException(); }
-        public void AutoDiscoverMediaNodes() { throw new NotImplementedException(); }
+        public MediaNode RetrieveMediaNode(string mediNodeId, bool sessions = false, bool recordings = false, bool extraInfo = false)
+        {
+            var request = new RestRequest($"{API_MEDIANODE}/{mediNodeId}");
+
+            request.AddHeader("Content-Type", "application/json");
+            request.AddQueryParameter("sessions", sessions);
+            request.AddQueryParameter("recordings", recordings);
+            request.AddQueryParameter("extra-info", extraInfo);
+
+            RestResponse response = httpClient.Execute(request);
+
+            if (response.StatusCode == HttpStatusCode.NotFound)
+                throw new OpenViduHttpException($"No Media Node exists for the passed {mediNodeId}");
+
+            if (response.StatusCode != HttpStatusCode.OK)
+                throw new OpenViduHttpException(response.StatusCode.ToString());
+
+            var json = JsonNode.Parse(response.Content ?? string.Empty);
+            var result = json.Deserialize<MediaNode>();
+
+            return result;
+
+        }
+
+        public List<MediaNode> RetrieveAllMediaNodes(bool sessions = false, bool recordings = false, bool extraInfo = false)
+        {
+            var request = new RestRequest($"{API_MEDIANODE}");
+
+            request.AddHeader("Content-Type", "application/json");
+            request.AddQueryParameter("sessions", sessions);
+            request.AddQueryParameter("recordings", recordings);
+            request.AddQueryParameter("extra-info", extraInfo);
+
+            RestResponse response = httpClient.Execute(request);
+
+            if (response.StatusCode != HttpStatusCode.OK)
+                throw new OpenViduHttpException(response.StatusCode.ToString());
+
+            var json = JsonNode.Parse(response.Content ?? string.Empty);
+            var list = json["content"].Deserialize<MediaNode[]>();
+
+            return list.ToList();
+        }
+
+        private MediaNode addMediaNode(object node, bool wait = false)
+        {
+            var request = new RestRequest($"{API_MEDIANODE}", Method.Post);
+            var body = JsonSerializer.Serialize(node);
+
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+
+            RestResponse response = httpClient.Execute(request);
+
+            if (response.StatusCode == (HttpStatusCode)400)
+                throw new OpenViduHttpException("Problem with some body parameter");
+            if (response.StatusCode == (HttpStatusCode)404)
+                throw new OpenViduHttpException("The Media Node is not within reach of OpenVidu Server. This simply means that OpenVidu cannot establish a connection with it. This may be caused by multiple reasons: wrong IP, port or path, a network problem, too strict a proxy configuration...");
+            if (response.StatusCode == (HttpStatusCode)405)
+                throw new OpenViduHttpException("For OpenVidu Enterprise HA clusters this method is not allowed");
+            if (response.StatusCode == (HttpStatusCode)409)
+                throw new OpenViduHttpException("The Media Node was already registered in OpenVidu Server as part of the cluster");
+            if (response.StatusCode == (HttpStatusCode)501)
+                throw new OpenViduHttpException("The cluster is deployed On Premises and no uri parameter was passed in the body request");
+            if (response.StatusCode == (HttpStatusCode)502)
+                throw new OpenViduHttpException("The process of launching a new Media Node instance failed. This won't ever happen for On Premises deployments, where instances require to be previously launched");
+
+            if (response.StatusCode != HttpStatusCode.OK)
+                throw new OpenViduHttpException(response.StatusCode.ToString());
+
+            var json = JsonNode.Parse(response.Content ?? string.Empty);
+            var data = json["content"].ToString();
+            var result = JsonSerializer.Deserialize<MediaNode>(data);
+            return result;
+        }
+        public MediaNode AddMediaNode(MediaNodeOnPremises node, bool wait = false)
+        {
+            return addMediaNode(node);
+        }
+        public MediaNode AddMediaNode(MediaNodeAws node, bool wait = false)
+        {
+            return addMediaNode(node);
+        }
+
+        public void RemoveMediaNode(string mediNodeId, MediaNodeStrategy deletionStrategy = MediaNodeStrategy.if_no_sessions , bool wait = false)
+        {
+
+            var request = new RestRequest($"{API_MEDIANODE}/{mediNodeId}", Method.Delete);
+
+            request.AddHeader("Content-Type", "application/json");
+            request.AddQueryParameter("wait",wait);
+            request.AddQueryParameter("deletion‑strategy", deletionStrategy.ToString());
+
+            RestResponse response = httpClient.Execute(request);
+
+            if (response.StatusCode == (HttpStatusCode)202)
+                throw new OpenViduHttpException($"If query parameter deletion-strategy is set to when-no-sessions, then it means that the Media Node to be deleted has ongoing sessions inside of it. Media Node status has been set to waiting-idle-to-terminate");
+            if (response.StatusCode == (HttpStatusCode)204)
+                return;
+            //    throw new OpenViduHttpException($"The Media Node was successfully removed");
+            if (response.StatusCode == (HttpStatusCode)404)
+                throw new OpenViduHttpException($"No Media Node exists for the passed {mediNodeId}");
+            if (response.StatusCode == (HttpStatusCode)405)
+                throw new OpenViduHttpException($"For OpenVidu Enterprise HA clusters this method is not allowed");
+            if (response.StatusCode == (HttpStatusCode)409)
+                throw new OpenViduHttpException($"If query parameter deletion-strategy is set to if-no-sessions, then it means that the Media Node to be deleted has ongoing sessions inside of it. No Media Node deletion will take place at all");
+            if (response.StatusCode == (HttpStatusCode)502)
+                throw new OpenViduHttpException($"Error while terminating the Media Node instance. This won't ever happen for On Premises deployments, where instances require manual shut down");
+
+            if (response.StatusCode != HttpStatusCode.OK)
+                throw new OpenViduHttpException(response.StatusCode.ToString());
+
+        }
+
+        public MediaNode ModifyMediaNode(string mediNodeId,MediaNodeStatus status)
+        {
+            var request = new RestRequest($"{API_MEDIANODE}/{mediNodeId}", Method.Patch);
+
+            request.AddHeader("Content-Type", "application/json");
+            request.AddBody(JsonSerializer.Serialize(new
+            {
+                status = status.ToString()
+            }));
+
+            RestResponse response = httpClient.Execute(request);
+
+            if (response.StatusCode == (HttpStatusCode)204)
+                throw new OpenViduHttpException($"The Media Node has not been modified because its status was the same as the provided through body parameters");
+            if (response.StatusCode == (HttpStatusCode)400)
+                throw new OpenViduHttpException($"Problem with some body parameter. This means the Media Node cannot transition from its current status to the indicated one in the status request body parameter");
+            if (response.StatusCode == (HttpStatusCode)404)
+                throw new OpenViduHttpException($"No Media Node exists for the passed MEDIA_NODE_ID");
+            if (response.StatusCode == (HttpStatusCode)405)
+                throw new OpenViduHttpException($"For OpenVidu Enterprise HA clusters this method is not allowed");
+
+
+            if (response.StatusCode != HttpStatusCode.OK)
+                throw new OpenViduHttpException(response.StatusCode.ToString());
+
+            var json = JsonNode.Parse(response.Content ?? string.Empty);
+            var result = json.Deserialize<MediaNode>();
+
+            return result;
+        }
+
+        public List<MediaNode> AutoDiscoverMediaNodes()
+        {
+            var request = new RestRequest($"{API_MEDIANODE}",Method.Put);
+
+            request.AddHeader("Content-Type", "application/json");
+
+
+            RestResponse response = httpClient.Execute(request);
+
+            if (response.StatusCode != (HttpStatusCode)405)
+                throw new OpenViduHttpException("For OpenVidu Enterprise HA clusters this method is not allowed");
+            
+            var json = JsonNode.Parse(response.Content ?? string.Empty);
+            var list = json["content"].Deserialize<MediaNode[]>();
+
+            return list.ToList();
+        }
 
         #endregion
 

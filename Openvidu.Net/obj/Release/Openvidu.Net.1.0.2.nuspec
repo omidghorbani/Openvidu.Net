@@ -5,11 +5,12 @@
     <version>1.0.2</version>
     <authors>Openvidu.Net</authors>
     <icon>logo.png</icon>
-    <projectUrl>https://github.com/omidghorbani/Openvidu.Net.git</projectUrl>
+    <projectUrl>https://gitlab.com/atreya-co/vendor/openvidu/openvidu.net</projectUrl>
     <description>this package makes easy access to OpenVidu Api in the Dotnet application platform, in this project you can use all API on OpenVidu by REST API. Finally this package work on OpenVidu 2.23.0 version.</description>
-    <repository type="git" url="https://github.com/omidghorbani/Openvidu.Net.git" />
+    <repository type="git" url="https://gitlab.com/atreya-co/vendor/openvidu/openvidu.net" />
     <dependencies>
       <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="6.0.0" exclude="Build,Analyzers" />
         <dependency id="RestSharp" version="108.0.1" exclude="Build,Analyzers" />
         <dependency id="System.Text.Json" version="6.0.5" exclude="Build,Analyzers" />
       </group>

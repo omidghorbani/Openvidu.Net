@@ -11,6 +11,8 @@
     <RepositoryUrl>https://gitlab.com/atreya-co/vendor/openvidu/openvidu.net</RepositoryUrl>
     <PackageProjectUrl>https://gitlab.com/atreya-co/vendor/openvidu/openvidu.net</PackageProjectUrl>
     <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
   </PropertyGroup>
 
   <ItemGroup>
