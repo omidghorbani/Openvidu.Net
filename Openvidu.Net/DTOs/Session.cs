@@ -45,7 +45,7 @@ namespace Openvidu.Net.DTOs
         [JsonPropertyName("customSessionId")]
         public string CustomSessionId { get; set; } = DefaultValues.customSessionId;
 
-        [JsonPropertyName("connections")]
+        [JsonPropertyName("connections.content")]
         public Connections Connections { get; set; }
 
         [JsonPropertyName("recording")]

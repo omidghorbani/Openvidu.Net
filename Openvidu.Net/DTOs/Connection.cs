@@ -36,9 +36,8 @@ namespace Openvidu.Net.DTOs
         [JsonConverter(typeof(JsonDateTimeConverter))]
         public DateTime CreatedAt { get; set; }
 
-        [JsonPropertyName("activeAt")]
-        [JsonConverter(typeof(JsonDateTimeConverter))]
-        public DateTime ActiveAt { get; set; }
+        //[JsonPropertyName("activeAt")]
+        //public DateTime ActiveAt { get; set; }
 
         [JsonPropertyName("location")]
         public string Location { get; set; }
@@ -57,6 +56,9 @@ namespace Openvidu.Net.DTOs
 
         [JsonPropertyName("clientData")]
         public string ClientData { get; set; }
+
+        [JsonPropertyName("data")]
+        public string Data { get; set; }
 
         [JsonPropertyName("record")]
         public bool Record { get; set; }

@@ -18,6 +18,7 @@ namespace Openvidu.Net.Options
         [JsonPropertyName("videoMinSendBandwidth")]
         public int VideoMinSendBandwidth { get; set; }
 
-        [JsonPropertyName("allowedFilters")] public List<Filter> AllowedFilters { get; set; }
+        [JsonPropertyName("allowedFilters")]
+        public string[] AllowedFilters { get; set; }
     }
 }

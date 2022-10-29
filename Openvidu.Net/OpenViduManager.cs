@@ -16,6 +16,8 @@ using RestSharp.Authenticators;
 
 namespace Openvidu.Net
 {
+    
+
     public class OpenViduManager : IOpenViduManager
     {
 
@@ -45,15 +47,27 @@ namespace Openvidu.Net
             secret = appSetting.GetSection("Router:Secret").Value;
             _appSetting = appSetting;
 
+
+            init();
+        }
+
+        public OpenViduManager(string hostname, string username, string secret)
+        {
+            this.hostname = hostname;
+            this.username = username;
+            this.secret = secret;
+            init();
+        }
+
+        private void init()
+        {
             if (!hostname.EndsWith("/"))
                 hostname += "/";
 
             httpClient = new RestClient(hostname);
 
             httpClient.Authenticator = new HttpBasicAuthenticator(username, secret);
-
         }
-
         #region [ Sessions ]
 
         public Session InitializeSession(Session session)
@@ -86,15 +100,15 @@ namespace Openvidu.Net
             request.AddHeader("Content-Type", "application/json");
 
             RestResponse response = httpClient.Execute(request);
-
+            if (response.StatusCode == HttpStatusCode.NotFound)
+                return null;
             if (response.StatusCode != HttpStatusCode.OK)
                 throw new OpenViduHttpException(response.StatusCode.ToString());
             // else
             //throw new OpenViduClientException($"the session {sessionId} not found");
 
             var json = JsonNode.Parse(response.Content ?? string.Empty);
-            var data = json["content"].ToString();
-            var session = JsonSerializer.Deserialize<Session>(data);
+            var session = json.Deserialize<Session>();
 
             return session;
         }
@@ -128,6 +142,17 @@ namespace Openvidu.Net
         {
             try
             {
+
+                var cons = RetrieveAllConnections(sessionId);
+
+                foreach (var con in cons)
+                    CloseConnections(sessionId, con.Id);
+                RetrieveAllRecording();
+
+                foreach (var rec in activeRecordings)
+                   if(rec.Value.SessionId == sessionId)
+                       StopRecordingSession(rec.Key);
+
                 var request = new RestRequest($"{API_SESSIONS}/{sessionId}", Method.Delete);
 
                 request.AddHeader("Content-Type", "application/json");
@@ -163,8 +188,7 @@ namespace Openvidu.Net
                 throw new OpenViduHttpException(response.StatusCode.ToString());
 
             var json = JsonNode.Parse(response.Content ?? string.Empty);
-            var data = json["content"].ToString();
-            connection = JsonSerializer.Deserialize<Connection>(data);
+            connection = json.Deserialize<Connection>();
             return connection;
         }
 
@@ -266,7 +290,7 @@ namespace Openvidu.Net
 
         #region [ Recordings ]
 
-        public void StartRecordingSession(string sessionId, RecordingProperties properties)
+        public Recording StartRecordingSession(string sessionId, RecordingProperties properties)
         {
 
             var request = new RestRequest(API_RECORDINGS_START, Method.Post);
@@ -281,17 +305,18 @@ namespace Openvidu.Net
 
             RestResponse response = httpClient.Execute(request);
 
-            if (response.StatusCode == HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Conflict)
+            {
                 RetrieveAllRecording();
-            else
-                throw new OpenViduHttpException(response.StatusCode.ToString());
+                return RetrieveRecording(sessionId);
+            }
 
-
+            return null;
         }
 
-        public void StartRecordingSession(string sessionId, string name = "")
+        public Recording StartRecordingSession(string sessionId, string name = "")
         {
-            StartRecordingSession(sessionId, new RecordingProperties()
+            return StartRecordingSession(sessionId, new RecordingProperties()
             {
                 Name = name
             });
@@ -309,18 +334,20 @@ namespace Openvidu.Net
 
             if (response.StatusCode == HttpStatusCode.OK)
                 RetrieveAllRecording();
-            else
-                throw new OpenViduHttpException(response.StatusCode.ToString());
+            //else
+                //throw new OpenViduHttpException(response.StatusCode.ToString());
 
         }
 
-        public Recording RetrieveRecording(string recordingId)
+        public Recording RetrieveRecording(string sessionId)
         {
+            RetrieveAllRecording();
             foreach (var recording in activeRecordings)
-                if (recording.Value.Id == recordingId)
+                if (recording.Value.SessionId == sessionId)
                     return recording.Value;
 
-            throw new OpenViduException($"No recording exists for the passed {recordingId}.");
+            return null;
+            //throw new OpenViduException($"No recording exists for the passed {recordingId}.");
         }
 
         public List<Recording> RetrieveAllRecording()
@@ -341,7 +368,7 @@ namespace Openvidu.Net
                 activeRecordings.Clear();
 
             foreach (var recording in list)
-                activeRecordings.Add(recording.SessionId, recording);
+                activeRecordings.Add(recording.Id, recording);
 
             return list.ToList();
         }

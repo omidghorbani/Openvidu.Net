@@ -650,7 +650,7 @@
     "C:\\Users\\Omid\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.2",
+    "version": "1.0.4",
     "restore": {
       "projectUniqueName": "C:\\Projects\\open-source\\Openvidu\\Openvidu.Net\\Openvidu.Net\\Openvidu.Net.csproj",
       "projectName": "Openvidu.Net",

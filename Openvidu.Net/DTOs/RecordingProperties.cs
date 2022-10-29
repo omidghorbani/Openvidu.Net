@@ -8,20 +8,22 @@ namespace Openvidu.Net.DTOs
 {
     public class RecordingProperties
     {
-        public static class DefaultValues
-        {
-            public static string name = "";
-            public static bool hasAudio = true;
-            public static bool hasVideo = true;
-            public static RecordingOutputMode outputMode = RecordingOutputMode.COMPOSED;
-            public static RecordingLayout recordingLayout = Enums.RecordingLayout.BEST_FIT;
-            public static string resolution = "1280x720";
-            public static int frameRate = 25;
-            public static long shmSize = 536870912L;
-            public static string customLayout = "";
-            public static bool ignoreFailedStreams = false;
-        }
 
+
+        public RecordingProperties(string name = "")
+        {
+
+            HasAudio = true;
+            HasVideo = true;
+            OutputMode = RecordingOutputMode.COMPOSED;
+            RecordingLayout = "BEST_FIT";
+            Resolution = "1280x720";
+            FrameRate = 25;
+            ShmSize = 536870912;
+
+            Name = string.IsNullOrEmpty(name) ? new Random().Next(1000, 9999).ToString() : name;
+
+        }
         [JsonPropertyName("name")]
         public string Name { get; set; }
 

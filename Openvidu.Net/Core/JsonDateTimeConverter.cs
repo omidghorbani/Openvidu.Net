@@ -21,9 +21,17 @@ namespace Openvidu.Net.Core
 
         public override object Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
+            try
+            {
 
-            return new DateTime(1970, 1, 1) + TimeSpan.FromMilliseconds(reader.GetInt64());
+                return new DateTime(1970, 1, 1) + TimeSpan.FromMilliseconds(reader.GetInt64());
 
+            }
+            catch (Exception e)
+            {
+                return new DateTime(1970, 1, 1) + TimeSpan.FromMilliseconds(0);
+
+            }
         }
 
         public override void Write(Utf8JsonWriter writer, object value, JsonSerializerOptions options)

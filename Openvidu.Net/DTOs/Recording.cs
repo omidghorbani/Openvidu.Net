@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json.Serialization;
+using Openvidu.Net.Core;
 using Openvidu.Net.Enums;
 
 namespace Openvidu.Net.DTOs
@@ -16,6 +17,7 @@ namespace Openvidu.Net.DTOs
         public string Name { get; set; }
 
         [JsonPropertyName("outputMode")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public RecordingOutputMode OutputMode { get; set; }
 
         [JsonPropertyName("hasAudio")]
@@ -40,13 +42,14 @@ namespace Openvidu.Net.DTOs
         public string SessionId { get; set; }
 
         [JsonPropertyName("createdAt")]
+        [JsonConverter(typeof(JsonDateTimeConverter))]
         public DateTime CreatedAt { get; set; }
 
         [JsonPropertyName("size")]
         public int Size { get; set; }
 
         [JsonPropertyName("duration")]
-        public TimeSpan Duration { get; set; }
+        public decimal Duration { get; set; }
 
         [JsonPropertyName("url")]
         public string Url { get; set; }

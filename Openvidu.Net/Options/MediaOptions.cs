@@ -26,7 +26,7 @@ namespace Openvidu.Net.Options
         [JsonPropertyName("videoDimensions")]
         public string VideoDimensions { get; set; }
 
-        [JsonPropertyName("filter")]
-        public Filter Filter { get; set; }
+        //[JsonPropertyName("filter")]
+        //public string[] Filter { get; set; }
     }
 }
