@@ -1,0 +1,45 @@
+[9:55:31 PM Verbose] - BuildManager - C:\Projects\open-source\Openvidu\Openvidu.Net\ConsoleApp1\Program.cs(10,26): error CS7036: There is no argument given that corresponds to the required formal parameter 'secret' of 'OpenViduManager.OpenViduManager(string, string, string)'
+[9:55:31 PM Verbose] - BuildManager - C:\Projects\open-source\Openvidu\Openvidu.Net\ConsoleApp1\Program.cs(12,30): error CS1061: 'OpenViduManager' does not contain a definition for 'CreateSession' and no accessible extension method 'CreateSession' accepting a first argument of type 'OpenViduManager' could be found (are you missing a using directive or an assembly reference?)
+[9:55:31 PM Verbose] - BuildManager - C:\Projects\open-source\Openvidu\Openvidu.Net\ConsoleApp1\Program.cs(14,16): error CS1061: 'OpenViduManager' does not contain a definition for 'FetchSessions' and no accessible extension method 'FetchSessions' accepting a first argument of type 'OpenViduManager' could be found (are you missing a using directive or an assembly reference?)
+[9:55:31 PM Verbose] - BuildManager - C:\Projects\open-source\Openvidu\Openvidu.Net\ConsoleApp1\Program.cs(16,26): error CS1061: 'OpenViduManager' does not contain a definition for 'GetActiveSessions' and no accessible extension method 'GetActiveSessions' accepting a first argument of type 'OpenViduManager' could be found (are you missing a using directive or an assembly reference?)
+[9:55:31 PM Verbose] - BuildManager - C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\Roslyn\Microsoft.CSharp.Core.targets(75,5): error MSB4181: The "Csc" task returned false but did not log an error.
+[9:55:31 PM Verbose] - BuildManager - Some of the file paths defined in the csproj under the Live Unit Testing build path are missing. Verify whether these files should be present under the Live Unit Testing build path and if necessary update the csproj definition to look these files up in a different place.
+[9:55:31 PM Verbose] - BuildManager - Item _OutputPathItem 'C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\ConsoleApp1\Debug\net6.0\' evaluated via:
+_OutputPathItem: '$(OutDir)' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:310
+  OutDir: '$(OutputPath)' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:228
+    OutputPath: '$(OutputPath)$(TargetFramework.ToLowerInvariant())\' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets:245
+      OutputPath: '$(BaseOutputPath)$(Configuration)\' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets:33
+        BaseOutputPath: 'C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\ConsoleApp1\' @ C:\Projects\open-source\Openvidu\Openvidu.Net\ConsoleApp1\ConsoleApp1.csproj:0
+        Configuration: 'Debug'
+[9:55:31 PM Verbose] - BuildManager - Item AppConfigFileDestination 'C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\ConsoleApp1\Debug\net6.0\ConsoleApp1.dll.config' evaluated via:
+AppConfigFileDestination: '$(OutDir)$(TargetFileName).config' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:339
+  OutDir: '$(OutputPath)' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:228
+    OutputPath: '$(OutputPath)$(TargetFramework.ToLowerInvariant())\' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets:245
+      OutputPath: '$(BaseOutputPath)$(Configuration)\' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets:33
+        BaseOutputPath: 'C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\ConsoleApp1\' @ C:\Projects\open-source\Openvidu\Openvidu.Net\ConsoleApp1\ConsoleApp1.csproj:0
+        Configuration: 'Debug'
+  TargetFileName: '$(TargetName)$(TargetExt)' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:248
+    TargetName: '$(AssemblyName)' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:240
+      AssemblyName: '$(MSBuildProjectName)' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props:32
+        MSBuildProjectName: 'ConsoleApp1'
+    TargetExt: '.dll' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.BeforeCommon.targets:106
+[9:55:31 PM Verbose] - BuildManager - Item _DebugSymbolsOutputPath 'C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\ConsoleApp1\Debug\net6.0\ConsoleApp1.pdb' evaluated via:
+_DebugSymbolsOutputPath: '@(_DebugSymbolsIntermediatePath->'$(OutDir)%(Filename)%(Extension)')' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:406
+  OutDir: '$(OutputPath)' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:228
+    OutputPath: '$(OutputPath)$(TargetFramework.ToLowerInvariant())\' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets:245
+      OutputPath: '$(BaseOutputPath)$(Configuration)\' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets:33
+        BaseOutputPath: 'C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\ConsoleApp1\' @ C:\Projects\open-source\Openvidu\Openvidu.Net\ConsoleApp1\ConsoleApp1.csproj:0
+        Configuration: 'Debug'
+[9:55:31 PM Verbose] - BuildManager - Item _ApplicationManifestFinal 'C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\ConsoleApp1\Debug\net6.0\ConsoleApp1.dll.manifest' evaluated via:
+_ApplicationManifestFinal: '$(OutDir)$(_DeploymentTargetApplicationManifestFileName)' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:444
+  OutDir: '$(OutputPath)' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:228
+    OutputPath: '$(OutputPath)$(TargetFramework.ToLowerInvariant())\' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets:245
+      OutputPath: '$(BaseOutputPath)$(Configuration)\' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets:33
+        BaseOutputPath: 'C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\ConsoleApp1\' @ C:\Projects\open-source\Openvidu\Openvidu.Net\ConsoleApp1\ConsoleApp1.csproj:0
+        Configuration: 'Debug'
+  _DeploymentTargetApplicationManifestFileName: '$(TargetFileName).manifest' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:268
+    TargetFileName: '$(TargetName)$(TargetExt)' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:248
+      TargetName: '$(AssemblyName)' @ C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets:240
+        AssemblyName: '$(MSBuildProjectName)' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props:32
+          MSBuildProjectName: 'ConsoleApp1'
+      TargetExt: '.dll' @ C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.BeforeCommon.targets:106

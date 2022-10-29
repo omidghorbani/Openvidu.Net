@@ -5,11 +5,9 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openvidu.Net", "Openvidu.Net\Openvidu.Net.csproj", "{A6CD31A7-6398-422D-BFED-3CDBB8CB6012}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{7F49873E-D5FD-4EA4-98D1-D3D9204BC9B9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openvidu.Net.Aspnet", "Openvidu.Net.Aspnet\Openvidu.Net.Aspnet.csproj", "{29D82498-309A-4DA2-8054-E7FDEDA9B9DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Openvidu.Net.Test", "Openvidu.Net.Test\Openvidu.Net.Test.csproj", "{1CCAEE60-CE94-4E22-9015-8C25A5FCE1A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openvidu.Net.Test", "Openvidu.Net.Test\Openvidu.Net.Test.csproj", "{1CCAEE60-CE94-4E22-9015-8C25A5FCE1A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		{A6CD31A7-6398-422D-BFED-3CDBB8CB6012}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6CD31A7-6398-422D-BFED-3CDBB8CB6012}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6CD31A7-6398-422D-BFED-3CDBB8CB6012}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F49873E-D5FD-4EA4-98D1-D3D9204BC9B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F49873E-D5FD-4EA4-98D1-D3D9204BC9B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F49873E-D5FD-4EA4-98D1-D3D9204BC9B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F49873E-D5FD-4EA4-98D1-D3D9204BC9B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29D82498-309A-4DA2-8054-E7FDEDA9B9DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{29D82498-309A-4DA2-8054-E7FDEDA9B9DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29D82498-309A-4DA2-8054-E7FDEDA9B9DD}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,0 +1,13 @@
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.exe
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.deps.json
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.runtimeconfig.json
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.dll
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.csproj.AssemblyReference.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.AssemblyInfoInputs.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.AssemblyInfo.cs
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.csproj.CopyComplete
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.dll
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net.Test\Release\net6.0\refint\Openvidu.Net.Test.dll
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net.Test\Release\net6.0\Openvidu.Net.Test.genruntimeconfig.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net.Test\Release\net6.0\ref\Openvidu.Net.Test.dll

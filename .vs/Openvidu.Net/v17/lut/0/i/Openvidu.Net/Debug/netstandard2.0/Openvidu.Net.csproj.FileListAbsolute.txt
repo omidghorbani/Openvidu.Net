@@ -1,0 +1,8 @@
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\Openvidu.Net\Debug\netstandard2.0\Openvidu.Net.deps.json
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\b\Openvidu.Net\Debug\netstandard2.0\Openvidu.Net.dll
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net\Debug\netstandard2.0\Openvidu.Net.csproj.AssemblyReference.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net\Debug\netstandard2.0\Openvidu.Net.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net\Debug\netstandard2.0\Openvidu.Net.AssemblyInfoInputs.cache
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net\Debug\netstandard2.0\Openvidu.Net.AssemblyInfo.cs
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net\Debug\netstandard2.0\Openvidu.Net.csproj.CopyComplete
+C:\Projects\open-source\Openvidu\Openvidu.Net\.vs\Openvidu.Net\v17\lut\0\i\Openvidu.Net\Debug\netstandard2.0\Openvidu.Net.dll
