@@ -11,7 +11,8 @@ namespace Openvidu.Net.Aspnet.Core
     {
         public static IServiceCollection ConfigureOpenVidu(this IServiceCollection services)
         {
-            services.AddHostedService<OpenViduService>();
+            services.AddSingleton<IOpenViduService, OpenViduService>();
+            //services.AddHostedService<OpenViduService>();
 
             return services;
         }
