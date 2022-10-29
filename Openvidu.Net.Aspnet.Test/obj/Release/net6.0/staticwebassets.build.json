@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "CLmNpGc/blc8IWg/WIL9I50BDyj1VZQccimYeVpPuBU=",
+  "Source": "Openvidu.Net.Aspnet.Test",
+  "BasePath": "_content/Openvidu.Net.Aspnet.Test",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
