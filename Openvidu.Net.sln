@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openvidu.Net.Aspnet", "Open
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openvidu.Net.Test", "Openvidu.Net.Test\Openvidu.Net.Test.csproj", "{1CCAEE60-CE94-4E22-9015-8C25A5FCE1A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Openvidu.Net.Aspnet.Test", "Openvidu.Net.Aspnet.Test\Openvidu.Net.Aspnet.Test.csproj", "{60E74C5F-0198-490C-BBB1-CCBED863E722}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1CCAEE60-CE94-4E22-9015-8C25A5FCE1A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CCAEE60-CE94-4E22-9015-8C25A5FCE1A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CCAEE60-CE94-4E22-9015-8C25A5FCE1A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60E74C5F-0198-490C-BBB1-CCBED863E722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60E74C5F-0198-490C-BBB1-CCBED863E722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60E74C5F-0198-490C-BBB1-CCBED863E722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60E74C5F-0198-490C-BBB1-CCBED863E722}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
