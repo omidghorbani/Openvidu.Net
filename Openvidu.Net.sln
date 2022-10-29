@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openvidu.Net.Aspnet", "Open
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openvidu.Net.Test", "Openvidu.Net.Test\Openvidu.Net.Test.csproj", "{1CCAEE60-CE94-4E22-9015-8C25A5FCE1A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Openvidu.Net.Aspnet.Test", "Openvidu.Net.Aspnet.Test\Openvidu.Net.Aspnet.Test.csproj", "{60E74C5F-0198-490C-BBB1-CCBED863E722}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openvidu.Net.Aspnet.Test", "Openvidu.Net.Aspnet.Test\Openvidu.Net.Aspnet.Test.csproj", "{60E74C5F-0198-490C-BBB1-CCBED863E722}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{94CF7AE4-130E-4923-978C-AF5E3D83F8E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E9816FDB-A154-4C69-880D-DAA9BDD5BFB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A6CD31A7-6398-422D-BFED-3CDBB8CB6012} = {E9816FDB-A154-4C69-880D-DAA9BDD5BFB0}
+		{29D82498-309A-4DA2-8054-E7FDEDA9B9DD} = {E9816FDB-A154-4C69-880D-DAA9BDD5BFB0}
+		{1CCAEE60-CE94-4E22-9015-8C25A5FCE1A0} = {94CF7AE4-130E-4923-978C-AF5E3D83F8E8}
+		{60E74C5F-0198-490C-BBB1-CCBED863E722} = {94CF7AE4-130E-4923-978C-AF5E3D83F8E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A1B26D24-DC38-4F83-9A82-100FCEE04F67}
