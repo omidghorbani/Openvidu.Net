@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Openvidu.Net.Test/1.0.0": {
         "dependencies": {
-          "Openvidu.Net": "1.0.3"
+          "Openvidu.Net": "1.0.5"
         },
         "runtime": {
           "Openvidu.Net.Test.dll": {}
@@ -62,7 +62,7 @@
           }
         }
       },
-      "Openvidu.Net/1.0.3": {
+      "Openvidu.Net/1.0.5": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
           "RestSharp": "108.0.1",
@@ -122,7 +122,7 @@
       "path": "system.text.json/6.0.5",
       "hashPath": "system.text.json.6.0.5.nupkg.sha512"
     },
-    "Openvidu.Net/1.0.3": {
+    "Openvidu.Net/1.0.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -4,9 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageIcon>logo.png</PackageIcon>
     <Description>this package makes easy access to OpenVidu Api in the Dotnet application platform, in this project you can use all API on OpenVidu by REST API. Finally this package work on OpenVidu 2.23.0 version.</Description>
-    <AssemblyVersion>1.0.4</AssemblyVersion>
-    <FileVersion>1.0.4</FileVersion>
-    <Version>1.0.4</Version>
+    <AssemblyVersion>1.0.5</AssemblyVersion>
+    <FileVersion>1.0.5</FileVersion>
+    <Version>1.0.5</Version>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://gitlab.com/atreya-co/vendor/openvidu/openvidu.net</RepositoryUrl>
     <PackageProjectUrl>https://gitlab.com/atreya-co/vendor/openvidu/openvidu.net</PackageProjectUrl>
