@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Openvidu.Net/1.0.5": {
+      "Openvidu.Net/1.0.6": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
           "NETStandard.Library": "2.0.3",
@@ -150,7 +150,7 @@
     }
   },
   "libraries": {
-    "Openvidu.Net/1.0.5": {
+    "Openvidu.Net/1.0.6": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

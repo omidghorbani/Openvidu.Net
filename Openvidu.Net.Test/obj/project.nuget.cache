@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/fmJvQDnV+dJd1X2MSTOm5ed2N1gepTlIHTLOpyzq23M+LLN2rmUGTNgz1QYuB1VuPTZ6B+D96eTP707XjknkA==",
+  "dgSpecHash": "NsuTrGyGJ4m8DR1RZyW/sJOySOQjZjRGq6afUjmmOXX0+EBw4sk27V1EGrTTp7+vRyccF8qRBEbrjS7b6xcdWQ==",
   "success": true,
   "projectFilePath": "C:\\Projects\\open-source\\Openvidu\\Openvidu.Net\\Openvidu.Net.Test\\Openvidu.Net.Test.csproj",
   "expectedPackageFiles": [
@@ -9,8 +9,7 @@
     "C:\\Users\\Omid\\.nuget\\packages\\restsharp\\108.0.1\\restsharp.108.0.1.nupkg.sha512",
     "C:\\Users\\Omid\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Omid\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
-    "C:\\Users\\Omid\\.nuget\\packages\\system.text.json\\6.0.5\\system.text.json.6.0.5.nupkg.sha512",
-    "C:\\Users\\Omid\\.nuget\\packages\\openvidu.net\\1.0.5\\openvidu.net.1.0.5.nupkg.sha512"
+    "C:\\Users\\Omid\\.nuget\\packages\\system.text.json\\6.0.5\\system.text.json.6.0.5.nupkg.sha512"
   ],
   "logs": []
 }
