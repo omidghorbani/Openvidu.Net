@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Openvidu.Net.Aspnet.Test/1.0.0": {
         "dependencies": {
-          "Openvidu.Net.Aspnet": "1.0.5"
+          "Openvidu.Net.Aspnet": "1.0.6"
         },
         "runtime": {
           "Openvidu.Net.Aspnet.Test.dll": {}
@@ -151,7 +151,7 @@
           }
         }
       },
-      "Openvidu.Net.Aspnet/1.0.5": {
+      "Openvidu.Net.Aspnet/1.0.6": {
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "6.0.8",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
@@ -325,7 +325,7 @@
       "path": "system.text.json/6.0.5",
       "hashPath": "system.text.json.6.0.5.nupkg.sha512"
     },
-    "Openvidu.Net.Aspnet/1.0.5": {
+    "Openvidu.Net.Aspnet/1.0.6": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

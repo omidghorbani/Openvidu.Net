@@ -288,7 +288,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Openvidu.Net.Aspnet/1.0.5": {
+      "Openvidu.Net.Aspnet/1.0.6": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -791,7 +791,7 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Openvidu.Net.Aspnet/1.0.5": {
+    "Openvidu.Net.Aspnet/1.0.6": {
       "type": "project",
       "path": "../Openvidu.Net.Aspnet/Openvidu.Net.Aspnet.csproj",
       "msbuildProject": "../Openvidu.Net.Aspnet/Openvidu.Net.Aspnet.csproj"
@@ -799,7 +799,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Openvidu.Net.Aspnet >= 1.0.5"
+      "Openvidu.Net.Aspnet >= 1.0.6"
     ]
   },
   "packageFolders": {
