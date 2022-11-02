@@ -17,9 +17,10 @@ namespace Openvidu.Net.Aspnet.Core
             return services;
         }
 
-        public static IApplicationBuilder UseOpenVidu(this IApplicationBuilder app)
+        public static IApplicationBuilder UseOpenVidu(this IApplicationBuilder app, OpenViduWebhookOption option)
         {
-            app.UseMiddleware<OpenViduMiddleware>();
+            
+            app.UseMiddleware<OpenViduMiddleware>(option);
 
             return app;
         }

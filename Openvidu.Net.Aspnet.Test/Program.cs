@@ -10,7 +10,13 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.UseOpenVidu();
+app.UseOpenVidu(new OpenViduWebhookOption()
+{
+    AcceptHeaders = new List<(string header, string value)>()
+    {
+        ("Authorization", "My_CUSTOM_TOKEN_FOR_VR"),
+    }
+});
 app.UseAuthorization();
 
 app.MapControllers();
